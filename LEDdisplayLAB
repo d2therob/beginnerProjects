@@ -1,0 +1,109 @@
+# Define patterns for each digit
+led_pattern_list = [
+    # Pattern 0
+    [
+        "###",
+        "# #",
+        "# #",
+        "# #",
+        "###"
+    ],
+    # Pattern 1
+    [
+        "  #",
+        "  #",
+        "  #",
+        "  #",
+        "  #"
+    ],
+    # Pattern 2
+    [
+        "###",
+        "  #",
+        "###",
+        "#  ",
+        "###"
+    ],
+    # Pattern 3
+    [
+        "###",
+        "  #",
+        "###",
+        "  #",
+        "###"
+    ],
+    # Pattern 4
+    [
+        "# #",
+        "# #",
+        "###",
+        "  #",
+        "  #"
+    ],
+    # Pattern 5
+    [
+        "###",
+        "#  ",
+        "###",
+        "  #",
+        "###"
+    ],
+    # Pattern 6
+    [
+        "###",
+        "#  ",
+        "###",
+        "# #",
+        "###"
+    ],
+    # Pattern 7
+    [
+        "###",
+        "  #",
+        "  #",
+        "  #",
+        "  #"
+    ],
+    # Pattern 8
+    [
+        "###",
+        "# #",
+        "###",
+        "# #",
+        "###"
+    ],
+    # Pattern 9
+    [
+        "###",
+        "# #",
+        "###",
+        "  #",
+        "###"
+    ]
+]
+
+# Calculate the maximum width of a digit pattern
+max_width = max(len(pattern[0]) for pattern in led_pattern_list)
+
+# Prompt the user for input
+user_input = input("Enter a number for LED Display: ")
+
+# Prepare to store the resulting lines
+result_lines = ["", "", "", "", ""]
+
+# Process each digit in the user input
+for digit in user_input:
+    if digit.isdigit():
+        digit_index = int(digit)
+        # Pad the digit pattern with spaces to match the maximum width
+        padded_pattern = [line.ljust(max_width) for line in led_pattern_list[digit_index]]
+        # For each line of the pattern, add the digit's pattern line to the result line
+        for i in range(5):
+            result_lines[i] += padded_pattern[i] + "   "  # Adding space for separation
+    else:
+        print(f"Invalid input: {digit}")
+        break
+
+# Print the resulting lines
+for line in result_lines:
+    print(line)
